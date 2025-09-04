@@ -1,9 +1,9 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
 import { dom } from 'https://hamilsauce.github.io/hamhelper/modules/index.js';
 // const { template, utils, dom } = ham;
-import { randInt } from '../lib/randomizer.js';
-import { GameListModel } from '../GameListModel.js';
-import { mockSlots1 } from '../mock-slot-list.js';
+import { randInt } from './lib/randomizer.js';
+import { GameListModel } from './GameListModel.js';
+import { mockSlots1 } from './mock-slot-list.js';
 const { createDOM } = dom;
 
 const app = document.querySelector('#app');
