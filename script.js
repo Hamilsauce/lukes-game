@@ -104,7 +104,7 @@ gameGrid.addEventListener('click', e => {
     randomBtn.value = 'RANDO'
     
     const scoreEl = document.querySelector('#score-value')
-    scoreEl.textContent = gameList.slotsWithValues.length
+    scoreEl.textContent = `${gameList.slotsWithValues.length}/${gameList.slots.length}`
   }
   
   if (randomBtn.value !== 'RANDO') {}

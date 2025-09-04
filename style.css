@@ -25,7 +25,7 @@ body {
   gap: 4px;
   width: 100%;
   height: 100%;
-  padding: 16px;
+  padding: 16px 4px;
   overflow: hidden;
   background: #444444;
   justify-items: center;
@@ -206,11 +206,13 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  /* text-align: right; */
   gap: 0px;
-  width: 100%;
+  max-width: 120px;
   height: 100%;
-  margin-top: 32px;
-  color: #C6C6C6;
+  margin-top: 64px;
+  color: #C6C6C6AB;
+  filter: contrast(1.4);
 }
 
 
