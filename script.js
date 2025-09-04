@@ -102,6 +102,9 @@ gameGrid.addEventListener('click', e => {
     targetRow.classList.add('locked')
     targetRow.dataset.locked = true;
     randomBtn.value = 'RANDO'
+    
+    const scoreEl = document.querySelector('#score-value')
+    scoreEl.textContent = gameList.slotsWithValues.length
   }
   
   if (randomBtn.value !== 'RANDO') {}

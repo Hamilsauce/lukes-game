@@ -103,7 +103,7 @@ body {
   background: transparent;
   color: #505050;
   border: 2px solid transparent;
-
+  
   /* display:  flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -113,22 +113,24 @@ body {
 
 .row[data-is-open=true] {
   /* border: 2px solid #CF5E21; */
-
+  
 }
-.row[data-is-open=true] .row-header{
+
+.row[data-is-open=true] .row-header {
   /* background: #37E35C; */
   /* filter: brightness(1.5) contrast(2); */
   color: #D6D6D6;
 }
-.row[data-is-open=true] .row-cell{
+
+.row[data-is-open=true] .row-cell {
   background: #3F3F3F5C;
   /* border: 2px solid transparent; */
   border-right: 2px solid #FFFFFF80;
   border-bottom: 0px solid #FFFFFF99;
   border-radius: 1px;
   filter: brightness(0.9) contrast(1.4);
-
-
+  
+  
 }
 
 
@@ -156,7 +158,7 @@ body {
 
 .row[data-locked=true] .row-cell {
   background: #C2C2C2;
-
+  
 }
 
 .scroll-container {
@@ -189,6 +191,20 @@ body {
   gap: 0px;
   /* background: #444444; */
   padding: 8px;
+  
+}
+
+.stat-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  /* width: 100%; */
+  /* max-width: 100px; */
+  padding: 8px;
+  color: #E6E6E6;
+  font-size: 18px;
   
 }
 
