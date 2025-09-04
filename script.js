@@ -60,9 +60,17 @@ const generateNewRando = () => {
 };
 
 randomBtn.addEventListener('click', e => {
+  if (randomBtn.value !== 'RANDO') {
+   return 
+  }
   const rando = generateNewRando()
   const unsetSlotIds = gameList.findNullSlots(rando)
   // const lowestValid = gameList.findLowestValid(rando)
+if (!unsetSlotIds.length) {
+  randomBtn.value = 'LOSE'
+  
+}
+
   const rows = gameGrid.querySelectorAll('.row')
   
   rows.forEach((el, i) => {
@@ -80,6 +88,8 @@ randomBtn.addEventListener('click', e => {
 gameGrid.addEventListener('click', e => {
   const target = e.target
   const targetRow = target.closest('.row')
+  const targetCell = targetRow.querySelector('.row-cell')
+
   const rowNumber = +targetRow.dataset.rowNumber
   
   const slotModel = gameList.findById(rowNumber)
@@ -88,9 +98,9 @@ gameGrid.addEventListener('click', e => {
   }
   if (slotModel && !slotModel.isSet && randomBtn.value !== 'RANDO') {
     slotModel.setValue(+randomBtn.value)
-    target.textContent = randomBtn.value
-    target.classList.add('locked')
-    target.dataset.locked = true;
+    targetCell.textContent = randomBtn.value
+    targetRow.classList.add('locked')
+    targetRow.dataset.locked = true;
     randomBtn.value = 'RANDO'
   }
   
