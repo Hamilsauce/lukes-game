@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <title>Lukes Crazy Number List Game</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.3.0/rxjs.umd.min.js" integrity="sha512-y3JTS47nnpKORJX8Jn1Rlm+QgRIIZHtu3hWxal0e81avPrqUH48yk+aCi+gprT0RMAcpYa0WCkapxe+bpBHD6g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div id="app">
+    <header id="app-header">
+      <div id="app-header-left"></div>
+      <div id="app-header-center">
+        <h1>Lukes Crazy Number List Game</h1>
+      </div>
+      <div id="app-header-right"></div>
+    </header>
+    <section id="app-body">
+      <div class="scroll-container">
+        <div id="game-grid"></div>
+      </div>
+      
+      <div id="game-controls">
+        <div id="game-controls-top">GAME STATS</div>
+        <div id="game-controls-bottom">
+          <input type="button" name="random-button" id="random-button" value="RANDO" />
+        </div>
+      </div>
+    </section>
+    <footer id="app-footer">
+      <div class="container">
+        hamilsauce
+      </div>
+    </footer>
+  </div>
+  <script type="importmap">
+    {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    }
+  }
+</script>
+  
+  <script src="./script.js" type="module"></script>
+</body>
+
+</html>
