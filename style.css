@@ -91,6 +91,7 @@ a {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 4px;
+  width: 100%;
 }
 
 #app-footer {
