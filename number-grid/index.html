@@ -8,21 +8,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <title>Lukes Crazy Number List Game</title>
+  <title>Number Grid Game</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.3.0/rxjs.umd.min.js" integrity="sha512-y3JTS47nnpKORJX8Jn1Rlm+QgRIIZHtu3hWxal0e81avPrqUH48yk+aCi+gprT0RMAcpYa0WCkapxe+bpBHD6g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <div id="app" data-game-started="false">
+  <div id="app">
     <header id="app-header">
       <!-- <div id="app-header-left"></div> -->
       <div id="app-header-center">
-        <h1>Lukes Crazy Number List Game</h1>
+        <h1>Crazy Number Grid Game</h1>
       </div>
-      <div id="app-header-right">
-        <span>BIZARRO</span>
-      </div>
+      <div id="app-header-right"></div>
     </header>
     <section id="app-body">
       <div class="scroll-container">
@@ -31,30 +29,20 @@
       
       <div id="game-controls">
         <div id="game-controls-top">
-          <div id="game-controls-header">
-            <h4>GAME STATS</h4>
-          </div>
+          <h4>GAME STATS</h4>
           
           <div class="stat-display">
             <div class="stat-label">Score</div>
             <div id="score-value" class="stat-value">0</div>
           </div>
-          <div class="stat-display">
-            <div class="stat-label">Retries</div>
-            <div id="retries-value" class="stat-value">3</div>
-          </div>
         </div>
         
         <div id="game-controls-bottom">
-          <div id="game-actions">
-            <input type="button" name="random-button" id="random-button" value="START" />
-            <svg id="trash-icon" data-hide="true" width="32" height="32" viewBox="2 2 20 20" preserveAspectRatio="xMidYMid meet" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+          <input type="button" name="random-button" id="random-button" value="RANDO" />
+          <div id="instructions">
+            <svg id="trash-icon" width="32" height="32" viewBox="2 2 20 20" preserveAspectRatio="xMidYMid meet" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
               <path fill="#FFFFFF" stroke="#000000" stroke-width="0.75" d="M 14.12,10.47L12,12.59L9.87,10.47L8.46,11.88L10.59,14L8.47,16.12L9.88,17.53L12,15.41L14.12,17.53L15.53,16.12L13.41,14L15.53,11.88L14.12,10.47M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9Z"></path>
             </svg>
-            
-          </div>
-          <div id="instructions">
-            click the button to generate a number<br><br> click a slot to place it<br><br>repeat
           </div>
         </div>
       </div>
