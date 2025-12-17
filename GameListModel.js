@@ -41,7 +41,7 @@ export class GameListModel extends EventTarget {
     
   };
   
-  get slots() { return this.#slots };
+  get slots() { return this.#slots }
   
   get emptySlots() { return this.findAll(_ => !_.isSet) };
   
@@ -94,21 +94,17 @@ export class GameListModel extends EventTarget {
       }
     }
     
-    // Step 2: Collect nulls in the proper span
     const nullSlots = [];
     
     if (left !== null && right !== null) {
-      // Between left and right
       for (let i = left + 1; i < right; i++) {
         if (arr[i] === null) nullSlots.push(i);
       }
     } else if (left === null && right !== null) {
-      // From start to right
       for (let i = 0; i < right; i++) {
         if (arr[i] === null) nullSlots.push(i);
       }
     } else if (left !== null && right === null) {
-      // From left to end
       for (let i = left + 1; i < arr.length; i++) {
         if (arr[i] === null) nullSlots.push(i);
       }
@@ -120,122 +116,5 @@ export class GameListModel extends EventTarget {
     }
     
     return nullSlots;
-  }
-  
-  findLowestValid(value) {
-    const slots = [...this.slotsWithValues];
-    
-    if (this.slottedCount === slots.length) return null;
-    if (this.emptySlots.length === slots.length) return slots[0];
-    if (this.hasValueSlotted(value)) return null;
-    
-    let cnt = 0;
-    let valids = [];
-    let curr = slots[cnt];
-    let prev = null;
-    
-    
-    while (curr) {
-      prev = curr;
-      curr = slots[cnt];
-      
-      const currValue = curr?.value;
-      const prevValue = prev?.value;
-      // console.warn('prevValue && prevValue < value', !!prevValue && +prevValue < +value)
-      if (!currValue && !!prevValue && +prevValue < +value) {
-        
-        valids.push(curr);
-      }
-      
-      if (+prevValue && +prevValue < +value) {}
-      
-      // console.warn('cnt', cnt)
-      // console.warn('prev', prev)
-      // console.warn('curr', curr)
-      
-      cnt++
-    }
-    
-    // for (let i = 0; i < slots.length; i++) {
-    //   curr = slots[i]
-    //   console.warn('curr, prev', curr, prev)
-    //   if (
-    //     (prev && !!prev.value) && (curr && !(!!curr.value)) &&
-    //     prev.value < value
-    //   ) {
-    //     return curr
-    //   }
-    
-    //   if (curr && !!curr.value && curr.value < value) {
-    //     prev = curr
-    //   }
-    
-    //   // if (curr && !curr.value) {
-    //   //   return curr
-    //   // }
-    // }
-    
-    return curr;
-  }
-  
-  findValidSlots(value) {
-    const valid = new Set();
-    const slots = this.slots;
-    
-    let a
-    let b
-    
-    for (let i = 0; i < slots.length; i++) {
-      
-      for (let j = i + 1; j < slots.length; j++) {
-        a = slots[i];
-        b = slots[j];
-        console.warn('a, b', a.id, b.id)
-        
-        if (
-          (a.value > value && value < b.value) ||
-          (b.value < value && value > a.value)
-        ) {
-          if (j > i + 1) {
-            for (let k = i + 1; k < j; k++) {
-              valid.add(k);
-            }
-          }
-        }
-        
-      }
-    }
-    
-    return [...valid].sort((a, b) => a - b);
-  }
-  
-  findValidSlotsGPT(value) {
-    const valid = new Set();
-    const slots = this.slots;
-    
-    let a
-    let b
-    
-    for (let i = 0; i < slots.length; i++) {
-      
-      for (let j = i + 1; j < slots.length; j++) {
-        a = slots[i];
-        b = slots[j];
-        
-        if (
-          (a.value > value && value < b.value) ||
-          (b.value < value && value > a.value)
-        ) {
-          if (j > i + 1) {
-            for (let k = i + 1; k < j; k++) {
-              valid.add(k);
-            }
-          }
-        }
-        
-      }
-    }
-    
-    return [...valid].sort((a, b) => a - b);
   }
 }
