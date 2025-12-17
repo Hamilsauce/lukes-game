@@ -18,6 +18,7 @@ export class UI {
     this.appHeaderCenter = this.getEl('#app-header-center')
     this.slotCount = this.getEl('#slot-count-input')
     this.scoreEl = this.getEl('#score-value')
+    this.losingNumber = this.getEl('#losing-number')
     this.retriesEl = this.getEl('#retries-value')
     this.trashButton = this.getEl('#trash-icon')
     
@@ -117,10 +118,10 @@ appState.on('statechange:retriesUsed', retriesUsed => {
 
 let gameList
 
-setTimeout(() => {
-  gameList = new GameListModel(gameGrid.children.length)
-  window.gameList = gameList
-}, 0);
+// setTimeout(() => {
+//   gameList = new GameListModel(gameGrid.children.length)
+//   window.gameList = gameList
+// }, 0);
 
 let cnt = 0;
 
@@ -159,13 +160,16 @@ const generateGrid = (rowCount) => {
 const startGame = () => {
   appState.slotCount = +ui.slotCount.value;
   const count = appState.slotCount
+  
   if (!count) return;
+  
   gameList = new GameListModel(count)
+  ui.losingNumber.innerHTML = '';
+  randomBtn.classList.remove('win')
   
   gameGrid.innerHTML = '';
   const rows = generateGrid(count);
   gameGrid.append(...rows);
-  
 }
 
 const generateNewRando = () => {
@@ -181,9 +185,9 @@ randomBtn.addEventListener('click', e => {
     
   }
   
-  if (['LOSE'].includes(randomBtn.value)) {
+  if (['LOSE', 'WIN'].includes(randomBtn.value)) {
     randomBtn.value = 'START'
-
+    
     app.dataset.gameStarted = false;
     return
   }
@@ -194,9 +198,22 @@ randomBtn.addEventListener('click', e => {
   
   const rando = generateNewRando()
   const unsetSlotIds = gameList.findNullSlots(rando)
+  const hasSetAllSlots = gameList.slots.length === gameList.slottedCount
+  console.warn({ hasSetAllSlots })
+  
+  
+  if (hasSetAllSlots) {
+    randomBtn.value = `WIN`
+    randomBtn.classList.add('win')
+    ui.trashButton.dataset.hide = true;
+    app.dataset.gameStarted = false;
+    
+    return
+  }
   
   if (!unsetSlotIds.length) {
-    randomBtn.value = 'LOSE'
+    randomBtn.value = `LOSE`;
+    ui.losingNumber.innerHTML = `Lost with ${rando}`;
     ui.trashButton.dataset.hide = true;
     app.dataset.gameStarted = false;
     

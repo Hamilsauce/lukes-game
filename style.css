@@ -212,6 +212,7 @@ a {
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
   justify-content: space-around;
+  justify-content: flex-start;
   /* align-self: center; */
   align-items: flex-start;
   gap: 24px;
@@ -238,6 +239,8 @@ a {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  align-items: flex-end;
+
   gap: 8px;
   width: 100%;
   /* height: 100%; */
@@ -262,7 +265,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start !important;
-  /* align-items: flex-start !important; */
+  align-items: center;
   gap: 0px;
   padding: 8px !important;
   
@@ -276,8 +279,17 @@ a {
   gap: 0px;
   width: 100%;
 }
-#slot-count *{
-  /* width: 100%; */
+
+#losing-number {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: #F9F9F9;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 4px 24px;
+  width: 100%;
+  color: #B30000;
 }
 #slot-count input {
   background: transparent;
@@ -296,6 +308,10 @@ a {
 }
 
 #app[data-game-started=true] #slot-count {
+  display: none;
+  transition: 0.25s;
+}
+#app[data-game-started=true] #losing-number {
   display: none;
   transition: 0.25s;
 }
@@ -363,6 +379,10 @@ a {
   background: #2F313A;
   border-radius: 5px;
   color: #EEEEEE;
+}
+
+#random-button.win {
+  background: #00B313;
 }
 
 #trash-icon[data-hide=true] {
